@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
     });
 });
 
+// get single user
 router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
@@ -22,12 +23,10 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Post,
-        // unsure if we will have 'created_at' consult, delete if needed!
         attributes: ["id", "title", "created_at"],
       },
       {
         model: Comment,
-        // created_at
         attributes: ["id", "comment_text", "created_at"],
         include: {
           model: Post,
@@ -55,6 +54,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// get user posts
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
@@ -75,6 +75,7 @@ router.post("/", (req, res) => {
     });
 });
 
+// user login
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -103,6 +104,7 @@ router.post("/login", (req, res) => {
   });
 });
 
+// user logout
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -113,6 +115,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
+// user update
 router.put("/:id", (req, res) => {
   User.update(req.body, {
     individualHooks: true,
@@ -132,6 +135,8 @@ router.put("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+//user delete
 
 router.delete("/:id", (req, res) => {
   User.destroy({

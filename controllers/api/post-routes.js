@@ -1,17 +1,15 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
 const { Post, User, Comment, Vote } = require("../../models");
-// Can't remember if this is needed possibly remove
 const withAuth = require("../../utils/auth");
 
-// get all users
+// get all post
 router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
     attributes: [
       "id",
       "title",
-      // Possibly remove
       "created_at",
       [
         sequelize.literal(
@@ -41,6 +39,7 @@ router.get("/", (req, res) => {
     });
 });
 
+// get single post
 router.get("/:id", (req, res) => {
   Post.findOne({
     where: {
@@ -49,7 +48,6 @@ router.get("/:id", (req, res) => {
     attributes: [
       "id",
       "title",
-      // Possibly remove
       "created_at",
       [
         sequelize.literal(
@@ -61,7 +59,6 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Comment,
-        // Possible remove created at
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
@@ -87,6 +84,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// create post
 router.post("/", withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
@@ -99,6 +97,7 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
+// upvote
 router.put("/upvote", withAuth, (req, res) => {
   Post.upvote(
     { ...req.body, user_id: req.session.user_id },
@@ -111,8 +110,9 @@ router.put("/upvote", withAuth, (req, res) => {
     });
 });
 
+// update post
 router.put("/:id", withAuth, (req, res) => {
-  Post: update(
+  Post.update(
     {
       title: req.body.title,
     },
@@ -135,6 +135,7 @@ router.put("/:id", withAuth, (req, res) => {
     });
 });
 
+// delete post
 router.delete("/:id", withAuth, (req, res) => {
   console.log("id", req.params.id);
   Post.destroy({
