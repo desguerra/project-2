@@ -49,6 +49,28 @@ User.init(
                 len: [4],
             },
         },
+        display_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1],
+            },
+        },
+        birthday: {
+            type: DataTypes.DATEONLY,
+            allowNull: false,
+            validate: {
+                isDate: true,
+            },
+        },
+        location: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        bio: {
+            type: DataTypes.STRING,
+            defaultValue: null,
+        },
     },
     {
         hooks: {

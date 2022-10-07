@@ -20,26 +20,6 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: [
-      {
-        model: Post,
-        attributes: ["id", "title", "created_at"],
-      },
-      {
-        model: Comment,
-        attributes: ["id", "comment_text", "created_at"],
-        include: {
-          model: Post,
-          attributes: ["title"],
-        },
-      },
-      {
-        model: Post,
-        attributes: ["title"],
-        through: Vote,
-        as: "voted_posts",
-      },
-    ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -54,16 +34,20 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// get user posts
+// create a new user
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    display_name: req.body.display_name,
+    birthday: req.body.birthday,
+    location: req.body.location,
+    bio: req.body.bio,
   })
     .then((dbUserData) => {
       req.session.save(() => {
-        req.session.user_id = dbUserdata.id;
+        req.session.user_id = dbUserData.id;
         req.session.loggedIn = true;
 
         res.json(dbUserData);
@@ -137,10 +121,9 @@ router.put("/:id", (req, res) => {
 });
 
 //user delete
-
 router.delete("/:id", (req, res) => {
   User.destroy({
-    Where: {
+    where: {
       id: req.params.id,
     },
   })
