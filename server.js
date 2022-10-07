@@ -3,6 +3,12 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
 
+// import helper functions we wrote
+const helpers = require('./utils/helpers');
+// set up handlebars
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({ helpers });
+
 // set up sessions
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -26,6 +32,10 @@ app.use(express.urlencoded({ extended: true }));
 // assets. Useful for front-end specific files like images,
 // style sheets, and JavaScript files.
 app.use(express.static(path.join(__dirname, 'public')));
+
+// set up handlebars as app's engine
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // set up sessions
 app.use(session(sess));
