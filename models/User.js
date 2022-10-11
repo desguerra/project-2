@@ -28,17 +28,7 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        // define an email column
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            // there cannot be any duplicate email values in this table
             unique: true,
-            // if allowNull is set to false, we can run our data through validators before creating the table data
-            validate: {
-                isEmail: true,
-            },
         },
         // define a password column
         password: {
@@ -48,28 +38,6 @@ User.init(
                 // this means the password must be at least four characters long
                 len: [4],
             },
-        },
-        display_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1],
-            },
-        },
-        birthday: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-            validate: {
-                isDate: true,
-            },
-        },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        bio: {
-            type: DataTypes.STRING,
-            defaultValue: null,
         },
     },
     {
