@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
 });
 
 // edit profile
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', (req, res) => { // FIXME: ADD WITHAUTH, ONCE LOGIN IS MADE
     Profile.update(
         {
             display_name: req.body.display_name,
