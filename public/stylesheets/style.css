@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oxygen:wght@300;400;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #FFE4F9;
+    --secondary: #CAABDD;
+    --tertiary: #9472C0;
+    --light-dark: #5F39A4;
+    --dark: #290087;
+    --border-radius: .3rem;
+}
+
+.btn-no-style {
+    margin: 0;
+    background: none!important;
+    border: none;
+    padding: 10px!important;
+}
+
+.normal-link, .navbar-nav a, .btn-no-style {
+    color: var(--tertiary);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px!important;
+}
+
+.normal-link:hover, .navbar-nav a:hover, .btn-no-style:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.profile-section, .homepage-section {
+    padding: 20px 0;
+}
