@@ -3,11 +3,11 @@
     
     <h2>Edit Profile</h2>
 
-    <div>username: {{profile.user.username}}</div>
+    <div class='mb-3'><strong>username</strong>: {{profile.user.username}}</div>
 
     <form id='edit-profile-form' class='edit-profile-form'>
-        <div>
-            <label for='display-name' class='form-label'>display name:</label>
+        <div class='mb-3'>
+            <label for='display-name' class='form-label'><strong>display name</strong>:</label>
             <input
                 name='display-name'
                 type='text'
@@ -15,8 +15,8 @@
                 value='{{profile.display_name}}'
             />
         </div>
-        <div>
-            <label for='birthday' class='form-label'>birthday:</label>
+        <div class='mb-3'>
+            <label for='birthday' class='form-label'><strong>birthday</strong>:</label>
             <input
                 name='birthday'
                 type='text'
@@ -24,8 +24,8 @@
                 value='{{profile.birthday}}'
             />
         </div>
-        <div>
-            <label for='location' class='form-label'>location:</label>
+        <div class='mb-3'>
+            <label for='location' class='form-label'><strong>location</strong>:</label>
             <input
                 name='location'
                 type='text'
@@ -33,8 +33,8 @@
                 value='{{profile.location}}'
             />
         </div>
-        <div>
-            <label for='bio' class='form-label'>bio:</label>
+        <div class='mb-3'>
+            <label for='bio' class='form-label'><strong>bio</strong>:</label>
             <textarea
                 name='bio'
                 class='form-control'
@@ -42,11 +42,11 @@
             >{{profile.bio}}</textarea>
         </div>
         
-        <button type='submit' class='btn'>save profile changes</button>
-        {{!-- <button type='button' class='btn' id='delete-account-btn'>delete account</button> --}}
+        <button type='submit' class='btn btn-dark'>save profile changes</button>
+        {{!-- <button type='button' class='btn btn-danger' id='delete-account-btn'>delete account</button> --}}
     </form>
 
 </section>
 
 <script src='/javascript/edit-profile.js'></script>
-{{!-- <script src='/javascript/delete-profile.js'></script> --}}
+{{!-- <script src='/javascript/delete-account.js'></script> --}}

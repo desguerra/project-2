@@ -1,13 +1,34 @@
 <section>
-  <h2>My Profile</h2>
+  <h2>{{profile.display_name}}'s profile</h2>
 
-  <div>
-    <div>username: {{profile.user.username}}</div>
-    <div>display name: {{profile.display_name}}</div>
-    <div>birthday: {{profile.birthday}}</div>
-    <div>location: {{profile.location}}</div>
-    <div>bio: {{profile.bio}}</div>
+  <div>    
+    <div class='mb-3'><strong>age</strong>
+        <div>
+            {{format_age profile.birthday}}
+        </div>
+    </div>
+
+    <div class='mb-3'><strong>sun sign</strong>
+        <div>
+            {{format_sunsign profile.birthday}}
+        </div>
+    </div>
+
+    <div class='mb-3'><strong>location</strong>
+        <div>
+            {{profile.location}}
+        </div>
+    </div>
+    
+    {{#if profile.bio}}
+    <div class='mb-3'><strong>bio</strong>
+        <div>
+            {{profile.bio}}
+        </div>
+    </div>
+    {{/if}}
   </div>
 
-  <a href="/profile-page/edit/{{profile.id}}" class="btn">edit post</a>
+  {{!-- FIXME: only display EDIT button if user is viewing their own profile --}}
+  <a href="/profile-page/edit/{{profile.id}}" class="btn btn-dark">edit profile</a>
 </section>
