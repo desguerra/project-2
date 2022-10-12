@@ -70,11 +70,11 @@ h6 {
     color: white;
     padding: 10px 15px;
 }
-.title a {
+.homepage-section a {
     color: var(--light-dark);
     text-decoration: wavy underline;
 }
-.title a:hover {
+.homepage-section a:hover {
     color: var(--secondary);
     text-decoration: none;
 }
