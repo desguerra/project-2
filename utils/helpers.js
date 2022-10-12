@@ -39,4 +39,12 @@ module.exports = {
 
         return signs[month];
     },
+    check_profile: (userId, profileId) => {
+
+        if (userId === profileId) {
+            return true;
+        }
+
+        return false;
+    },
 };

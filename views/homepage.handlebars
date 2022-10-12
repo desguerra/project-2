@@ -1,8 +1,4 @@
-<section class='homepage-section'>
-    Welcome to <span class='strong'>Star Sign Lovers</span>! 
-    Please <a href='/login'>login</a> or <a href='/signup'>signup</a> to view your compatible matches based off of your astrology sign :)
-</section>
-
+{{#if loggedIn}}
 <section class='homepage-section'>
     <h2>Your Matches</h2>
 
@@ -38,3 +34,11 @@
 
     {{/if}}
 </section>
+{{else}}
+
+<section class='homepage-section'>
+    Welcome to <span class='strong'>Star Sign Lovers</span>! 
+    Please <a href='/login'>login</a> or <a href='/signup'>signup</a> to view your compatible matches based off of your astrology sign :)
+</section>
+
+{{/if}}

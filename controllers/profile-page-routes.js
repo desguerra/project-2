@@ -3,7 +3,9 @@ const { User, Profile } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get single profile
-router.get('/:id', (req, res) => { // FIXME: ADD WITHAUTH, ONCE LOGIN IS MADE
+router.get('/:id', withAuth, (req, res) => {
+    console.log(req.session);
+    
     Profile.findOne({
         where: {
             id: req.params.id,
@@ -26,6 +28,7 @@ router.get('/:id', (req, res) => { // FIXME: ADD WITHAUTH, ONCE LOGIN IS MADE
             res.render('profile', {
                 profile,
                 loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id,
             });
         })
         .catch((err) => {
@@ -35,7 +38,7 @@ router.get('/:id', (req, res) => { // FIXME: ADD WITHAUTH, ONCE LOGIN IS MADE
 });
 
 // edit profile
-router.get('/edit/:id', (req, res) => { // FIXME: ADD WITHAUTH, ONCE LOGIN IS MADE
+router.get('/edit/:id', withAuth, (req, res) => {
     Profile.findOne(
         {
             where: {

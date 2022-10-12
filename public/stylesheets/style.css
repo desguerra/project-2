@@ -28,6 +28,10 @@ h6 {
     line-height: 1.25;
 }
 
+input[type='text'], textarea[name='bio'] {
+    border: 1px solid var(--secondary);
+}
+
 .btn-no-style {
     margin: 0;
     background: none!important;

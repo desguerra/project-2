@@ -3,6 +3,8 @@ const sequelize = require('../config/connection');
 const { Profile } = require('../models');
 
 router.get('/', (req, res) => {
+    console.log(req.session);
+
     Profile.findAll()
         .then((dbProfileData) => {
             const profiles = dbProfileData.map((profile) => profile.get({ plain: true }));
@@ -10,6 +12,7 @@ router.get('/', (req, res) => {
             res.render('homepage', {
                 profiles,
                 loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id,
             });
         })
         .catch((err) => {
