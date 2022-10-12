@@ -14,8 +14,8 @@ class Post extends Model {
                 },
                 attributes: [
                     'id',
-                    'post_url',
                     'title',
+                    'content',
                     'created_at',
                     [
                         sequelize.literal(
@@ -43,10 +43,6 @@ Post.init(
             allowNull: false,
         },
         content: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        food_type: {
             type: DataTypes.STRING,
             allowNull: false,
         },
