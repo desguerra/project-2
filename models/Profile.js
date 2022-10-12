@@ -22,7 +22,7 @@ Profile.init(
         birthday: {
             type: DataTypes.DATEONLY,
             allowNull: false,
-            defaultValue: '1998-01-01',
+            defaultValue: '2000-01-01',
             validate: {
                 isDate: true,
             },
