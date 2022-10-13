@@ -10,7 +10,7 @@
 
     <div class='mb-3'><strong>sun sign</strong>
         <div>
-            {{format_sunsign profile.birthday}}
+            {{format_sunsign profile.birthday}} {{format_signemoji profile.birthday}}
         </div>
     </div>
 
@@ -29,6 +29,7 @@
     {{/if}}
   </div>
 
-  {{!-- FIXME: only display EDIT button if user is viewing their own profile --}}
-  <a href="/profile-page/edit/{{profile.id}}" class="btn btn-dark">edit profile</a>
+  {{#if (check_profile user_id profile.id)}}
+  <a href="/profile-page/edit/{{user_id}}" class="btn btn-dark">edit profile</a>
+  {{/if}}
 </section>

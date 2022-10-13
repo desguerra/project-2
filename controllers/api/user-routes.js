@@ -44,6 +44,7 @@ router.post("/", (req, res) => {
     .then((dbUserData) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
         req.session.loggedIn = true;
 
         res.json(dbUserData);
@@ -63,14 +64,14 @@ router.post("/login", (req, res) => {
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "No user with that email address! " });
+      res.status(400).json({ message: "Incorrect username or password!" });
       return;
     }
 
     const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: "Incorrect Password!" });
+      res.status(400).json({ message: "Incorrect username or password!" });
       return;
     }
 

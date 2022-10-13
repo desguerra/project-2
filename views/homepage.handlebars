@@ -1,3 +1,44 @@
+{{#if loggedIn}}
 <section class='homepage-section'>
-    Welcome to Star Sign Lovers!
+    <h2>Your Matches</h2>
+
+    {{#if profiles.length}}
+    <ol class='profile-list'>
+        {{#each profiles as |profile|}}
+        <li>
+            <article class='profile'>
+                <div class='title text-bg-light'>
+                    <a href='/profile-page/{{id}}'><strong>{{display_name}}, {{format_age birthday}}</strong></a>
+                </div>
+                <div class='profile-content'>
+                    <div>
+                        ☀ {{format_sunsign birthday}}
+                        |
+                        📍 {{location}}
+                    </div>
+                    {{#if bio}}
+                        <div class='bio-preview'>
+                            <div><span class='strong'>bio</span></div>
+                            <div>{{bio}}</div>
+                        </div>
+                    {{/if}}
+                </div>
+            </article>
+        </li>
+        {{/each}}
+    </ol>
+
+    {{else}}
+
+    <div class='no-matches text-bg-light'>No matches found!</div>
+
+    {{/if}}
 </section>
+{{else}}
+
+<section class='homepage-section'>
+    Welcome to <span class='strong'>Star Sign Lovers</span>! 
+    Please <a href='/login'>login</a> or <a href='/signup'>signup</a> to view your compatible matches based off of your astrology sign :)
+</section>
+
+{{/if}}

@@ -14,7 +14,7 @@ module.exports = {
     format_sunsign: (date) => {
         const birthDate = new Date(date);
         const days = [21, 20, 21, 21, 22, 22, 23, 24, 24, 24, 23, 22];
-        const signs = ["Aquarius ♒🏺", "Pisces ♓🐟", "Aries ♈🐏", "Taurus ♉🐂", "Gemini ♊👬", "Cancer ♋🦀", "Leo ♌🐆", "Virgo ♍👧", "Libra ♎⚖", "Scorpio ♏🦂", "Sagittarius ♐🏹", "Capricorn ♑🐐"];
+        const signs = ["Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"];
         let month = birthDate.getMonth();
         let day = birthDate.getDate();
         if (month == 0 && day <= 20) {
@@ -24,5 +24,27 @@ module.exports = {
         };
 
         return signs[month];
+    },
+    format_signemoji: (date) => {
+        const birthDate = new Date(date);
+        const days = [21, 20, 21, 21, 22, 22, 23, 24, 24, 24, 23, 22];
+        const signs = ["♒🏺", "♓🐟", "♈🐏", "♉🐂", "♊👬", "♋🦀", "♌🐆", "♍👧", "♎⚖", "♏🦂", "♐🏹", "♑🐐"];
+        let month = birthDate.getMonth();
+        let day = birthDate.getDate();
+        if (month == 0 && day <= 20) {
+            month = 11;
+        } else if (day < days[month]) {
+            month--;
+        };
+
+        return signs[month];
+    },
+    check_profile: (userId, profileId) => {
+
+        if (userId === profileId) {
+            return true;
+        }
+
+        return false;
     },
 };
