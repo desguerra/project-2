@@ -28,8 +28,9 @@ h6 {
     line-height: 1.25;
 }
 
-input[type='text'], textarea[name='bio'] {
+input[type='text'], input[type='password'], textarea[name='bio'] {
     border: 1px solid var(--secondary);
+    margin: 3px 0;
 }
 
 .btn-no-style {
@@ -49,10 +50,19 @@ input[type='text'], textarea[name='bio'] {
     cursor: pointer;
     padding: 10px!important;
 }
-
 .normal-link:hover, .navbar-nav a:hover, .btn-no-style:hover {
     color: var(--secondary);
     text-decoration: wavy underline;
+}
+
+.login-link {
+    color: var(--secondary);
+    text-decoration: wavy underline;
+    font-weight: bold;
+}
+.login-link:hover {
+    color: var(--light-dark);
+    text-decoration: none;
 }
 
 .profile-section, .homepage-section {
@@ -108,4 +118,7 @@ input[type='text'], textarea[name='bio'] {
 .strong {
     color: var(--light-dark);
     font-weight: bold;
+}
+.shy {
+    color: var(--tertiary);
 }

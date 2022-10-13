@@ -16,7 +16,21 @@ async function signupFormHandler(event) {
 
         // check the response status
         if (response.ok) {
-            document.location.replace('/');
+            console.log('success');
+        } else {
+            alert(response.statusText);
+        }
+    }
+
+    if (username && password) {
+        const response = await fetch('/api/profiles', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        // check the response status
+        if (response.ok) {
+            document.location.replace(`/profile-page/`);
             console.log('success');
         } else {
             alert(response.statusText);

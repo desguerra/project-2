@@ -24,8 +24,8 @@
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                                 <a href="/" class="nav-link">home</a>
-                                <a href="/profile-page/{{user_id}}" class="nav-link">my profile</a>
                                 {{#if loggedIn}}
+                                <a href="/profile-page/" class="nav-link">my profile</a>
                                 <button id='logout' class='nav-link btn-no-style'>logout</button>
                                 {{else}}
                                 <a href='/login' class="nav-link">login</a>
@@ -42,6 +42,10 @@
 
             <!-- BOOTSTRAP SCRIPT -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+            {{#if loggedIn}}
+            <script src="/javascript/logout.js"></script>
+            {{/if}}
     
     </body>
 
