@@ -1,5 +1,5 @@
 <section class='profile-section'>
-    <a href='/profile-page/{{profile.id}}' class='normal-link'> &larr; back to profile</a>
+    <a href='/profile-page/' class='normal-link'> &larr; back to profile</a>
     
     <h2>Edit Profile</h2>
 
@@ -16,7 +16,7 @@
             />
         </div>
         <div class='mb-3'>
-            <label for='birthday' class='form-label'><strong>birthday</strong>:</label>
+            <label for='birthday' class='form-label'><strong>birthday</strong> <span class='shy'>(yyyy-mm-dd)</span>:</label>
             <input
                 name='birthday'
                 type='text'
@@ -34,7 +34,7 @@
             />
         </div>
         <div class='mb-3'>
-            <label for='bio' class='form-label'><strong>bio</strong>:</label>
+            <label for='bio' class='form-label'><strong>bio</strong> <span class='shy'>(optional)</span>:</label>
             <textarea
                 name='bio'
                 class='form-control'
@@ -48,5 +48,6 @@
 
 </section>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.7.0/validator.min.js"></script>
 <script src='/javascript/edit-profile.js'></script>
 {{!-- <script src='/javascript/delete-account.js'></script> --}}
